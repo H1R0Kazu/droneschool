@@ -38,19 +38,19 @@ while not vehicle.armed:
     time.sleep(1)
 
 # 目標高度を設定
-targetAltibude = 20
+targetAltitude = 20
 
 # テイクオフ実行
 # 20mの高さまで離陸する
 print "Take Off!!"
-vehicle.simple_takeoff(targetAltibude)
+vehicle.simple_takeoff(targetAltitude)
 
 # 目標の高度に達するまで待つ
 while True:
     print "Altitude: ", vehicle.location.global_relative_frame.alt
     if vehicle.location.global_relative_frame.alt >= targetAltitude * 0.95:
         print "Reached target altitude"
-        beak
+        break
         
     time.sleep(1)
 
