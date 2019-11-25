@@ -1,3 +1,9 @@
+# coding: UTF-8
+# 講習名： ドローンソフトウェアエンジニア
+# 記載日：　2019/11/25
+# 作成者：　宮田浩和
+#
+
 # Day3に書いたコード
 # シャープマークから始まる行はコメントです。
 # プログラムとして実行対象外です。
@@ -13,28 +19,40 @@ vehicle = connect('127.0.0.1:14550', wait_ready=True)
 # UbuntuでUSB経由で接続する場合
 # vehicle = connect('/dev/ttyACM0,115200', wait_ready=True)
 
-# 機体のパラメータを表示、ここではRTL_ALT（RTL高度）を出力
-print('%d' % vehicle.parameters['RTL_ALT'])
+# アーミング可能かチェック
+while not vehicle.is_armable:
+    print "Waiting for vehicle to initializ)e…"
+    time.sleep(1)    
 
-# もしもRTL高度が20m未満だった場合、30mに設定する
-rtlAlt = vehicle.parameters['RTL_ALT']
-if rtlAlt < 2000:
-    vehicle.parameters['RTL_ALT'] = 3000  # 単位cm
 
-# 再度表示して変更されているか確認する
-print('%d' % vehicle.parameters['RTL_ALT'])
-
-# GUIDEDモードに変更する
+# アーミングの実行
+# フライトモードをGUIDEDモードに変更し、armedにTrueを設定する
+print "Arming moters"
 vehicle.mode = VehicleMode('GUIDED')
-
-# 機体をアームする
 vehicle.armed = True
 
-# 10秒処理をスリープ（停止）する
-time.sleep(10)
 
+# アーミングが完了するまで待機
+while not vehicle.armed:
+    print "Waiting for arming..."
+    time.sleep(1)
 
+# 目標高度を設定
+targetAltibude = 20
 
+# テイクオフ実行
+# 20mの高さまで離陸する
+print "Take Off!!"
+vehicle.simple_takeoff(targetAltibude)
+
+# 目標の高度に達するまで待つ
+while True:
+    print "Altitude: ", vehicle.location.global_relative_frame.alt
+    if vehicle.location.global_relative_frame.alt >= targetAltitude * 0.95:
+        print "Reached target altitude"
+        beak
+        
+    time.sleep(1)
 
 
 # ここでプログラム終了
