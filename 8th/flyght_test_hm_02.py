@@ -9,6 +9,7 @@
 
 # 使用する関数、クラスを宣言する
 from dronekit import connect, VehicleMode
+from dronekit import LocationGlobal, LocationGlobalRelativ
 # 標準ライブラリのtimeを使う宣言
 import time
 
@@ -30,8 +31,8 @@ while not vehicle.is_armable:
 # downloadを繰り返し実行する。
 while not vehicle.home_location:
     cmds = vehicle.commands
-    cmds = download()
-    cmds = wait_ready()
+    cmds.download()
+    cmds.wait_ready()
 
     if not vehicle.home_location:
         print "Waiting for home location ...."
