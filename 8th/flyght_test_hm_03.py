@@ -32,9 +32,8 @@ while not vehicle.home_location:
 # ホームロケーションの取得完了
 print "\n Home location: %s " % vehicle.home_location
 
-# print(type(vehicle.home_location))
-target_location = vehicle.home_location(lat) + 1
-print(target_location)
+target_location = vehicle.LocationGlobal()
+print target_location.lat
 
 
 
