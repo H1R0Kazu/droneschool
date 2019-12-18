@@ -31,3 +31,11 @@ while not vehicle.home_location:
 
 # ホームロケーションの取得完了
 print "\n Home location: %s " % vehicle.home_location
+
+print(type(vehicle.home_location))
+
+
+
+
+
+# ここでプログラム終了
