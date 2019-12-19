@@ -56,4 +56,12 @@ print "System status: %s" % vehicle.system_status.state
 print "Mode: %s" % vehicle.mode.name    # settable
 print "Armed: %s" % vehicle.armed    # settable
 
+# 
+print "\n Class key and Value."
+for key, value in vehicle.location.global_frame.__dict__.items():
+	print(key, value)
+
+
+print(vehicle.location.global_frame.lat)
+
 # プログラム終わり
