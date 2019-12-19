@@ -32,10 +32,9 @@ while not vehicle.home_location:
 # ホームロケーションの取得完了
 print "\n Home location: %s " % vehicle.home_location
 
-<<<<<<< HEAD
 # vehicle is an instance of the Vehicle class
 print "Autopilot Firmware version: %s" % vehicle.version
-print "Autopilot capabilities (supports ftp): %s" % vehicle.capabilities.ftp
+# print "Autopilot capabilities (supports ftp): %s" % vehicle.capabilities.ftp
 print "Global Location: %s" % vehicle.location.global_frame
 print "Global Location (relative altitude): %s" % vehicle.location.global_relative_frame
 print "Local Location: %s" % vehicle.location.local_frame    #NED
@@ -58,12 +57,3 @@ print "Mode: %s" % vehicle.mode.name    # settable
 print "Armed: %s" % vehicle.armed    # settable
 
 # プログラム終わり
-=======
-target_location = vehicle.LocationGlobal()
-print target_location.lat
-
-
-
-
-# ここでプログラム終了
->>>>>>> 104778b4679fb875c216ce94777d903039636485

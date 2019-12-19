@@ -9,7 +9,7 @@
 
 # 使用する関数、クラスを宣言する
 from dronekit import connect, VehicleMode
-from dronekit import LocationGlobal, LocationGlobalRelativ
+from dronekit import LocationGlobal, LocationGlobalRelative
 # 標準ライブラリのtimeを使う宣言
 import time
 
@@ -23,8 +23,8 @@ vehicle = connect('127.0.0.1:14550', wait_ready=True)
 
 # アーミング可能かチェック
 while not vehicle.is_armable:
-    print "Waiting for vehicle to initializ)e…"
-    time.sleep(1)    
+    print "Waiting for vehicle to initialize…"
+    time.sleep(1)
 
 
 # vehicle.home_locationに値がセットされるまで
