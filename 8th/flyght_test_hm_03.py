@@ -6,7 +6,7 @@
 # 内容　：　絶対座標で移動する
 
 # 使用する関数、クラスを宣言する
-from dronekit import connect, VehicleMode
+from dronekit import connect, VehicleMode, LocationGlobalRelative
 # 標準ライブラリのtimeを使う宣言
 import time
 
@@ -36,8 +36,8 @@ print "\n Home location: %s " % vehicle.home_location
 # アーミング実行
 # フライトモードを”GUIDED”に変更し、armedにTrueを設定する。
 print "Arming Moters"
-vehicle.mode = vehicleMode("GUIDED")
-vehicle.armd = True
+vehicle.mode = VehicleMode("GUIDED")
+vehicle.armed = True
 
 while not vehicle.armed:
     print "Waiting for arming..."
@@ -62,9 +62,9 @@ while True:
     time.sleep(1)
     
 
-# 座標指定で移動
-# 目標ロケーションの設定 北に移動
-target1_location_lat = vehicle.location.global_relative_frame.lat + 0.00001
+# 座標指定で移動1
+# 目標ロケーションの設定 North
+target1_location_lat = vehicle.location.global_relative_frame.lat + 0.002
 target1_location_lon = vehicle.location.global_relative_frame.lon
 target1_location_alt = 30
 
@@ -73,19 +73,88 @@ aLocation = LocationGlobalRelative(target1_location_lat, target1_location_lon, t
 vehicle.simple_goto(aLocation)
 
 # 目標のロケーションに達するまで待つ
-while True:
-    print "Altitude: ", vehicle.location.global_relative_frame.alt 
+#while True:
+for i in range(60):
     # ロケーション情報の表示
     print "\n Current location: %s " % vehicle.location.global_relative_frame
+    print "\n Traget location: %s " % aLocation
 
-    if vehicle.location.global_relative_frame.lat >= target1_location_lat  * 0.95:
-        print "Reached target lat"
-        break
+#    if vehicle.location.global_relative_frame.lat >= target1_location_lat  * 0.9:
+#        print "Reached target lat"
+#        break
+
+    time.sleep(1)
+
+# 座標指定で移動2
+# 目標ロケーションの設定 East
+target2_location_lat = vehicle.location.global_relative_frame.lat
+target2_location_lon = vehicle.location.global_relative_frame.lon + 0.002
+target2_location_alt = 40
+
+aLocation = LocationGlobalRelative(target2_location_lat, target2_location_lon, target2_location_alt)
+
+vehicle.simple_goto(aLocation)
+
+# 目標のロケーションに達するまで待つ
+#while True:
+for i in range(60):
+    # ロケーション情報の表示
+    print "\n Current location: %s " % vehicle.location.global_relative_frame
+    print "\n Traget location: %s " % aLocation
+
+#    if vehicle.location.global_relative_frame.lon >= target2_location_lon  * 0.9:
+#       print "Reached target lon"
+#        break
+
+    time.sleep(1)
+
+# 座標指定で移動3
+# 目標ロケーションの設定 South
+target3_location_lat = vehicle.location.global_relative_frame.lat - 0.002
+target3_location_lon = vehicle.location.global_relative_frame.lon
+target3_location_alt = 50
+
+aLocation = LocationGlobalRelative(target3_location_lat, target3_location_lon, target3_location_alt)
+
+vehicle.simple_goto(aLocation)
+
+# 目標のロケーションに達するまで待つ
+#while True:
+for i in range(60):
+    # ロケーション情報の表示
+    print "\n Current location: %s " % vehicle.location.global_relative_frame
+    print "\n Traget location: %s " % aLocation
+
+#    if vehicle.location.global_relative_frame.lat <= target3_location_lat  * 0.9:
+#        print "Reached target lat"
+#        break
 
     time.sleep(1)
 
 
+# 座標指定で移動4
+# 目標ロケーションの設定 East
+target4_location_lat = vehicle.location.global_relative_frame.lat
+target4_location_lon = vehicle.location.global_relative_frame.lon - 0.002
+target4_location_alt = 60
 
+aLocation = LocationGlobalRelative(target4_location_lat, target4_location_lon, target4_location_alt)
+
+vehicle.simple_goto(aLocation)
+
+# 目標のロケーションに達するまで待つ
+#while True:
+for i in range(60):
+    # ロケーション情報の表示
+    print "\n Current location: %s " % vehicle.location.global_relative_frame
+    print "\n Traget location: %s " % aLocation
+
+#    if vehicle.location.global_relative_frame.lat <= target4_location_lat  * 0.9:
+#       print "Reached target lat"
+#        break
+
+# Return To Launch
+vehicle.mode = VehicleMode("RTL")
 
 
 # プログラム終わり
