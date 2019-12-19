@@ -1,6 +1,6 @@
 # coding: UTF-8
 # 講習名： ドローンソフトウェアエンジニア
-# 記載日：　2019/12/28
+# 記載日：　2019/12/20
 # 作成者：　宮田浩和
 # ファイル名：　flyght_test_hm_03.py
 # 内容　：　絶対座標で移動する
@@ -30,7 +30,7 @@ while not vehicle.home_location:
     if not vehicle.home_location:
         print "Waiting for home location ..."
 
-# ホームロケーションの取得完了
+# ホームロケーションの取得結果表示
 print "\n Home location: %s " % vehicle.home_location
 
 # アーミング実行
@@ -62,8 +62,8 @@ while True:
     time.sleep(1)
     
 
-# 座標指定で移動1
-# 目標ロケーションの設定 North
+# 座標指定で移動1　北
+# 目標ロケーションの設定 
 target1_location_lat = vehicle.location.global_relative_frame.lat + 0.002
 target1_location_lon = vehicle.location.global_relative_frame.lon
 target1_location_alt = 30
@@ -73,6 +73,7 @@ aLocation = LocationGlobalRelative(target1_location_lat, target1_location_lon, t
 vehicle.simple_goto(aLocation)
 
 # 目標のロケーションに達するまで待つ
+# 場所検知がうまくいかないため、時間指定(60秒)待つ
 #while True:
 for i in range(60):
     # ロケーション情報の表示
@@ -85,8 +86,8 @@ for i in range(60):
 
     time.sleep(1)
 
-# 座標指定で移動2
-# 目標ロケーションの設定 East
+# 座標指定で移動2 東
+# 目標ロケーションの設定 
 target2_location_lat = vehicle.location.global_relative_frame.lat
 target2_location_lon = vehicle.location.global_relative_frame.lon + 0.002
 target2_location_alt = 40
@@ -96,6 +97,7 @@ aLocation = LocationGlobalRelative(target2_location_lat, target2_location_lon, t
 vehicle.simple_goto(aLocation)
 
 # 目標のロケーションに達するまで待つ
+# 場所検知がうまくいかないため、時間指定(60秒)待つ
 #while True:
 for i in range(60):
     # ロケーション情報の表示
@@ -108,8 +110,8 @@ for i in range(60):
 
     time.sleep(1)
 
-# 座標指定で移動3
-# 目標ロケーションの設定 South
+# 座標指定で移動3 南
+# 目標ロケーションの設定 
 target3_location_lat = vehicle.location.global_relative_frame.lat - 0.002
 target3_location_lon = vehicle.location.global_relative_frame.lon
 target3_location_alt = 50
@@ -119,6 +121,7 @@ aLocation = LocationGlobalRelative(target3_location_lat, target3_location_lon, t
 vehicle.simple_goto(aLocation)
 
 # 目標のロケーションに達するまで待つ
+# 場所検知がうまくいかないため、時間指定(60秒)待つ
 #while True:
 for i in range(60):
     # ロケーション情報の表示
@@ -132,8 +135,8 @@ for i in range(60):
     time.sleep(1)
 
 
-# 座標指定で移動4
-# 目標ロケーションの設定 East
+# 座標指定で移動4 西
+# 目標ロケーションの設定
 target4_location_lat = vehicle.location.global_relative_frame.lat
 target4_location_lon = vehicle.location.global_relative_frame.lon - 0.002
 target4_location_alt = 60
@@ -143,6 +146,7 @@ aLocation = LocationGlobalRelative(target4_location_lat, target4_location_lon, t
 vehicle.simple_goto(aLocation)
 
 # 目標のロケーションに達するまで待つ
+# 場所検知がうまくいかないため、時間指定(60秒)待つ
 #while True:
 for i in range(60):
     # ロケーション情報の表示
@@ -153,7 +157,7 @@ for i in range(60):
 #       print "Reached target lat"
 #        break
 
-# Return To Launch
+# Return To Launch　
 vehicle.mode = VehicleMode("RTL")
 
 
