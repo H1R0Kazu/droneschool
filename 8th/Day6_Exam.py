@@ -17,10 +17,5 @@ import requests
 URL = 'https://www.tajisoft.jp/mission_8th.waypoints'
 print(URL)
 
-filepath = id + '.md'
-print(filepath)
 res = requests.get(URL, stream = True)
-with open(filepath, 'wb') as fp:
-    shutil.copyfileobj(res.raw, fp)
-
-
+print(res)
