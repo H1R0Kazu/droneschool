@@ -26,7 +26,7 @@ waypoint_text = res.text.split()
 
 #print(waypoint_text[3][0,8,9,10])
 
-for i in range(3,17)
-    print()
+for i in range(3, 17):
+    print("\nNo: %s", waypoint_text[i][0], "lat: %s", waypoint_text[i][8], "lon: %s", waypoint_text[i][9], "alt: %s", waypoint_text[i][10] )
 
 
