@@ -18,4 +18,4 @@ URL = 'https://www.tajisoft.jp/mission_8th.waypoints'
 print(URL)
 
 res = requests.get(URL, stream = True)
-print(res)
+print(res.text)
