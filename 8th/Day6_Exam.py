@@ -18,12 +18,15 @@ URL = 'https://www.tajisoft.jp/mission_8th.waypoints'
 print(URL)
 
 res = requests.get(URL, stream = True)
-print(res.text)
+#print(res.text)
 
 waypoint_text = res.text.split()
 
-print(waypoint_text)
+#print(waypoint_text[4][0])
 
+#print(waypoint_text[3][0,8,9,10])
 
+for i in range(3,17)
+    print()
 
 
