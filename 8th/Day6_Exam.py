@@ -15,19 +15,26 @@ import sys
 import shutil
 import requests
 URL = 'https://www.tajisoft.jp/mission_8th.waypoints'
-print(URL)
+#print(URL)
 
 res = requests.get(URL, stream = True)
-print(res.text)
+#print(res.text)
 
-waypoint_text = res.text.split()
+waypoint_line = res.text.split("\n")
+#print(waypoint_line)
+#waypoint_line = res.text.split("\n")
 
-print(waypoint_text[4][0])
+#print(len(waypoint_line))
+#print(type(waypoint_line))
 
-#print(waypoint_text[3][0,8,9,10])
+for i in range(2, len(waypoint_line)):
+#    print(type(waypoint_line[i]))
+#    print(waypoint_line[i])
+    waypoint_text = waypoint_line[i].split("\t")
+    print(waypoint_text)
+#    for j in range(len(waypoint_text)):
+#       print(j)
 
-for i in range(3, 17):
-#    print("\nNo: %s", waypoint_text[i][0], "lat: %s", waypoint_text[i][8], "lon: %s", waypoint_text[i][9], "alt: %s", waypoint_text[i][10] )
-    print("\nNo: %s", waypoint_text[i][0])
+#    print("\n")
 
-
+#waypoint_text = waypoint_line.
