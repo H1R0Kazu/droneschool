@@ -20,4 +20,10 @@ print(URL)
 res = requests.get(URL, stream = True)
 print(res.text)
 
+waypoint_text = res.text.split()
+
+print(waypoint_text)
+
+
+
 
