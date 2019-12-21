@@ -14,9 +14,7 @@ import time
 import sys
 import shutil
 import requests
-args = sys.argv
-id = args[1]
-URL = 'https://www.tajisoft.jp/mission_8th.waypoints' + id + '.md'
+URL = 'https://www.tajisoft.jp/mission_8th.waypoints'
 print(URL)
 
 filepath = id + '.md'
